@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Edit Tutorial</title>
+</head>
+<body>
+  <h2>Edit Tutorial</h2>
+  <form action="/edit-tutorial/<%= tutorialData.TutorialID %>" method="post">
+    <label for="TutorialID">Tutorial ID:</label>
+    <input type="text" id="TutorialID" name="TutorialID" value="<%= tutorialData.TutorialID %>" required><br>
+
+    <label for="TutorialDate">Tutorial Date:</label>
+    <input type="date" id="TutorialDate" name="TutorialDate" value="<%= tutorialData.TutorialDate %>" required><br>
+
+    <label for="TutorialTime">Tutorial Time:</label>
+    <input type="time" id="TutorialTime" name="TutorialTime" value="<%= tutorialData.TutorialTime %>" required><br>
+
+    <label for="Students">Students:</label>
+    <input type="text" id="Students" name="Students" value="<%= tutorialData.Students %>" required><br>
+
+    <label for="Tutor">Tutor:</label>
+    <input type="text" id="Tutor" name="Tutor" value="<%= tutorialData.Tutor %>" required><br>
+
+    <label for="Fee">Fee:</label>
+    <input type="number" id="Fee" name="Fee" value="<%= tutorialData.Fee %>" required><br>
+
+    <label for="TutorialNumber">Tutorial Number:</label>
+    <input type="text" id="TutorialNumber" name="TutorialNumber" value="<%= tutorialData.TutorialNumber %>" required><br>
+
+    <label for="TutorialAttendance">Tutorial Attendance:</label>
+    <input type="text" id="TutorialAttendance" name="TutorialAttendance" value="<%= tutorialData.TutorialAttendance %>" required><br>
+
+    <label for="TutorialSubject">Tutorial Subject:</label>
+    <input type="text" id="TutorialSubject" name="TutorialSubject" value="<%= tutorialData.TutorialSubject %>" required><br>
+
+    <label for="TutorialNotes">Tutorial Notes:</label>
+    <textarea id="TutorialNotes" name="TutorialNotes" rows="4" cols="50"><%= tutorialData.TutorialNotes %></textarea><br>
+
+    <input type="submit" value="Update Tutorial">
+  </form>
+</body>
+</html>

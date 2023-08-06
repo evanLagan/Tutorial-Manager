@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Tutorial Management</title>
+    <style>
+      body {
+        font-size: 12px;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+      
+      th, td {
+        text-align: center;
+        padding: 8px;
+      }
+      
+      th {
+        background-color: #f2f2f2;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Tutorial Management</h1>
+    <h2>Tutor Personal Details</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Title</th>
+          <th>First Name</th>
+          <th>Surname</th>
+          <th>Phone Number</th>
+          <th>Email Address</th>
+          <th>Address Line 1</th>
+          <th>Address Line 2</th>
+          <th>Town</th>
+          <th>County/City</th>
+          <th>Eircode</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% tutorData.forEach(function(tutor) { %>
+          <tr>
+            <td><%= tutor.id %></td>
+            <td><%= tutor.title %></td>
+            <td><%= tutor.first_name %></td>
+            <td><%= tutor.surname %></td>
+            <td><%= tutor.phone_number %></td>
+            <td><%= tutor.email_address %></td>
+            <td><%= tutor.address_line_1 %></td>
+            <td><%= tutor.address_line_2 %></td>
+            <td><%= tutor.town %></td>
+            <td><%= tutor.county_city %></td>
+            <td><%= tutor.eircode %></td>
+            <td><a href="/edit-tutor/<%= tutor.id %>">Edit</a></td>
+            <td><a href="/delete/<%= tutor.id %>">Delete</a></td>
+          </tr>
+        <% }); %>
+      </tbody>
+    </table>
+
+    <h2>Student Personal Details</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Title</th>
+          <th>First Name</th>
+          <th>Surname</th>
+          <th>Phone Number</th>
+          <th>Email Address</th>
+          <th>Address Line 1</th>
+          <th>Address Line 2</th>
+          <th>Town</th>
+          <th>County/City</th>
+          <th>Eircode</th>
+          <th>Date of Birth</th>
+          <th>Parent/Guardian Name</th>
+          <th>Attend Tutorial Virtually</th>
+          <th>Gender</th>
+          <th>Subject</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% studentData.forEach(function(student) { %>
+          <tr>
+            <td><%= student.id %></td>
+            <td><%= student.title %></td>
+            <td><%= student.first_name %></td>
+            <td><%= student.surname %></td>
+            <td><%= student.phone_number %></td>
+            <td><%= student.email_address %></td>
+            <td><%= student.address_line_1 %></td>
+            <td><%= student.address_line_2 %></td>
+            <td><%= student.town %></td>
+            <td><%= student.county_city %></td>
+            <td><%= student.eircode %></td>
+            <td><%= student.date_of_birth %></td>
+            <td><%= student.parent_guardian_name %></td>
+            <td><%= student.attend_tutorial_virtually %></td>
+            <td><%= student.gender %></td>
+            <td><%= student.subject %></td>
+            <td><a href="/edit-student/<%= student.id %>">Edit</a></td>
+            <td><a href="/delete-student/<%= student.id %>">Delete</a></td>
+          </tr>
+        <% }); %>
+      </tbody>
+    </table>
+
+    <h2>Add New Tutor Personal Detail</h2>
+    <form action="/add-tutor" method="post">
+      <!-- Tutor personal details fields -->
+      <label for="title">Title:</label>
+      <select id="title" name="title">
+        <option value="Mx">Mx</option>
+        <option value="Ms">Ms</option>
+        <option value="Mr">Mr</option>
+        <option value="Mrs">Mrs</option>
+        <option value="Miss">Miss</option>
+        <option value="Other">Other</option>
+      </select><br>
+
+      <label for="first_name">First Name:</label>
+      <input type="text" id="first_name" name="first_name" required><br>
+
+      <label for="surname">Surname:</label>
+      <input type="text" id="surname" name="surname" required><br>
+
+      <label for="phone_number">Phone Number:</label>
+      <input type="text" id="phone_number" name="phone_number" required><br>
+
+      <label for="email_address">Email Address:</label>
+      <input type="email" id="email_address" name="email_address" required><br>
+
+      <label for="address_line_1">Address Line 1:</label>
+      <input type="text" id="address_line_1" name="address_line_1" required><br>
+
+      <label for="address_line_2">Address Line 2:</label>
+      <input type="text" id="address_line_2" name="address_line_2"><br>
+
+      <label for="town">Town:</label>
+      <input type="text" id="town" name="town" required><br>
+
+      <label for="county_city">County/City:</label>
+      <input type="text" id="county_city" name="county_city" required><br>
+
+      <label for="eircode">Eircode:</label>
+      <input type="text" id="eircode" name="eircode" required><br>
+
+      <input type="submit" value="Add">
+    </form>
+
+    <h2>Add New Student Personal Detail</h2>
+    <form action="/add-student" method="post">
+      <!-- Student personal details fields -->
+      <label for="title">Title:</label>
+      <select id="title" name="title">
+        <option value="Mx">Mx</option>
+        <option value="Ms">Ms</option>
+        <option value="Mr">Mr</option>
+        <option value="Mrs">Mrs</option>
+        <option value="Miss">Miss</option>
+        <option value="Other">Other</option>
+      </select><br>
+
+      <label for="first_name">First Name:</label>
+      <input type="text" id="first_name" name="first_name" required><br>
+
+      <label for="surname">Surname:</label>
+      <input type="text" id="surname" name="surname" required><br>
+
+      <label for="phone_number">Phone Number:</label>
+      <input type="text" id="phone_number" name="phone_number" required><br>
+
+      <label for="email_address">Email Address:</label>
+      <input type="email" id="email_address" name="email_address" required><br>
+
+      <label for="address_line_1">Address Line 1:</label>
+      <input type="text" id="address_line_1" name="address_line_1" required><br>
+
+      <label for="address_line_2">Address Line 2:</label>
+      <input type="text" id="address_line_2" name="address_line_2"><br>
+
+      <label for="town">Town:</label>
+      <input type="text" id="town" name="town" required><br>
+
+      <label for="county_city">County/City:</label>
+      <input type="text" id="county_city" name="county_city" required><br>
+
+      <label for="eircode">Eircode:</label>
+      <input type="text" id="eircode" name="eircode" required><br>
+
+      <label for="date_of_birth">Date of Birth:</label>
+      <input type="date" id="date_of_birth" name="date_of_birth" max="9999-12-31" required><br>
+
+      <label for="parent_guardian_name">Parent/Guardian Name:</label>
+      <input type="text" id="parent_guardian_name" name="parent_guardian_name"><br>
+
+      <label for="attend_tutorial_virtually">Attend Tutorial Virtually:</label>
+      <select id="attend_tutorial_virtually" name="attend_tutorial_virtually">
+        <option value="Y">Yes</option>
+        <option value="N">No</option>
+      </select><br>
+
+      <label for="gender">Gender:</label>
+      <select id="gender" name="gender">
+        <option value="Male">Male</option>
+        <option value="Female">Female</option>
+        <option value="Other">Other</option>
+      </select><br>
+
+      <label for="subject">Subject:</label>
+      <input type="text" id="subject" name="subject" required><br>
+
+      <input type="submit" value="Add">
+    </form>
+
+
+
+<!-- Display tutorial records -->
+<h1>Tutorial Information</h1>
+<table>
+  <thead>
+    <tr>
+      <th>Tutorial ID</th>
+      <th>Date</th>
+      <th>Time</th>
+      <th>Students</th>
+      <th>Tutor</th>
+      <th>Fee</th>
+      <th>Tutorial Number</th>
+      <th>Attendance</th>
+      <th>Subject</th>
+      <th>Notes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% tutorialData.forEach((tutor) => { %>
+      <tr>
+        <td><%= tutor.TutorialID %></td>
+        <td><%= tutor.TutorialDate %></td>
+        <td><%= tutor.TutorialTime %></td>
+        <td><%= tutor.Students %></td>
+        <td><%= tutor.Tutor %></td>
+        <td><%= tutor.Fee %></td>
+        <td><%= tutor.TutorialNumber %></td>
+        <td><%= tutor.TutorialAttendance %></td>
+        <td><%= tutor.TutorialSubject %></td>
+        <td><%= tutor.TutorialNotes %></td>
+        <td>
+          <a href="/edit-tutorial/<%= tutor.TutorialID %>">Edit</a>
+        </td>
+        <td>
+          <form action="/delete-tutorial/<%= tutor.TutorialID %>" method="POST">
+            <button type="submit">Delete</button>
+          </form>
+        </td>
+      </tr>
+    <% }); %>
+  </tbody>
+</table>
+
+<h2>Add New Tutorial</h2>
+<form action="/add-tutorial" method="post">
+  <!-- Tutorial details fields -->
+  <label for="TutorialID">Tutorial ID:</label>
+  <input type="number" id="TutorialID" name="TutorialID" required><br>
+
+  <label for="TutorialDate">Date:</label>
+  <input type="date" id="TutorialDate" name="TutorialDate" required><br>
+
+  <label for="TutorialTime">Time:</label>
+  <input type="time" id="TutorialTime" name="TutorialTime" required><br>
+
+  <label for="Students">Students (Max: 5):</label>
+  <input type="number" id="Students" name="Students" required><br>
+
+  <label for="Tutor">Tutor:</label>
+  <input type="text" id="Tutor" name="Tutor" required><br>
+
+  <label for="Fee">Fee:</label>
+  <input type="number" step="0.01" id="Fee" name="Fee" required><br>
+
+  <label for="TutorialNumber">Tutorial Number:</label>
+  <input type="number" id="TutorialNumber" name="TutorialNumber" required><br>
+
+  <label for="TutorialAttendance">Attendance:</label>
+  <select id="TutorialAttendance" name="TutorialAttendance" required>
+    <option value="Attended">Attended</option>
+    <option value="Cancelled">Cancelled</option>
+    <option value="No Show">No Show</option>
+  </select><br>
+
+  <label for="TutorialSubject">Subject:</label>
+  <select id="TutorialSubject" name="TutorialSubject" required>
+    <option value="English">English</option>
+    <option value="Irish">Irish</option>
+    <option value="Maths">Maths</option>
+    <option value="Biology">Biology</option>
+    <option value="Chemistry">Chemistry</option>
+    <option value="Physics">Physics</option>
+    <option value="Computer Science">Computer Science</option>
+    <option value="Other">Other</option>
+  </select><br>
+
+  <label for="TutorialNotes">Notes:</label>
+  <textarea id="TutorialNotes" name="TutorialNotes"></textarea><br>
+
+  <input type="submit" value="Add Tutorial">
+</form>
+
+</body>
+</html>
+
+
